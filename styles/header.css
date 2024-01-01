@@ -1,0 +1,166 @@
+.cabecalho__menu-hamburguer{
+    width: 50px;
+    height: 50px;
+    background-image: url("../img/Menu.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+.cabecalho{
+    background-color: var(--branco);
+    display: flex;
+    justify-content: space-between;
+    position: relative; /*permite que sejam inseridas as variáveis top, left, rigth*/
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.container__imagem{
+    padding: 0.4em;
+}
+
+.container__titulo{
+    display: none;
+}
+
+.opcoes{
+    display: none;
+}
+
+.lista-menu{
+    display: none;
+    position: absolute; /*permite que os elementos sejam movimentados conforme desejado, porém necessita que o obejto que ele esteja atrelado seja diferente de estático*/
+    top: 100%;
+    width: 60vw; /*vw é viewport, que se refere a tela, neste caso o 60 se refere a ocupaçãod de 60% da tela*/
+}
+
+.container__botao:checked ~.lista-menu{ /*Mais próximo que pode haver de js, nesse caso será identificado quando o botão está apertado e mostrará os itens*/
+    display: block;
+}
+
+.lista-menu__titulo,
+.lista-menu__item{
+    padding: 1em;
+    background-color: var(--branco);
+}
+
+.lista-menu__titulo{
+    color: var(--laranja);
+    font-weight: 700;
+}
+
+.lista-menu__link
+{   background: var(--azul-degrade);
+    -webkit-backdrop-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+}
+
+.container__texto{
+    display: none;
+}
+
+.container__botao:checked ~ .container__rotulo > .cabecalho__menu-hamburguer{
+    background-image: url("../img/MenuAberto.svg");
+}
+
+.container__botao:checked ~ .container__rotulo {
+    background: var(--azul-degrade);
+}
+
+@media screen and (min-width: 1024px) {
+    .container__titulo, .container__titulo--negrito{
+        font-family: var(--fonte-secundaria);
+        font-size: 30px;
+    }
+
+    .container__titulo{
+        font-weight: 400;
+        display: block;
+    }
+
+    .container__titulo--negrito{
+        font-weight: 700;
+    }
+
+    .opcoes{
+        display: flex;
+    }
+
+    .opcoes__item{
+        padding: 1.5em 1em;
+        text-transform: uppercase;
+    }
+
+    .opcoes__link{
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .container__imagem-transparente, .cabecalho__menu-hamburguer{
+        display: none;
+    }
+
+    .opcoes__botao:checked ~ .lista-menu{
+        display: block;
+        width: auto;
+    }
+
+    .opcoes__botao{
+        display: none;
+    }
+
+    .opcoes__botao:checked ~ .opcoes__rotulo > .opcoes__item{
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .lista-menu__item:hover{
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover > .lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+
+    /*
+    Seletores de irmãos adjacentes (en-US)
+    O combinador + seleciona os nós que seguem imediatamente o elemento especificado anteriormente. Sintaxe: A + B Exemplo: ul + li irá corresponder a qualquer elemento <li> que segue imediatamente após um elemento <ul>.
+
+    Seletores gerais de irmãos
+    O combinador ~ seleciona os nós que seguem (não necessariamente imediatamente) o elemento especificado anteriormente, se ambos os elementos compartilham o mesmo pai. Sintaxe: A ~ B Exemplo: p ~ span irá corresponder a todo elemento <span> que seguir um elemento <p> dentro de um mesmo elemento pai.
+
+    Seletor de filhos (en-US)
+    O combinador > seleciona nós que são filhos diretos do elemento especificado anteriormente. Sintaxe: A > B Exemplo: ul > li irá corresponder a todo elemento <li> que estiver diretamente dentro de um elemento <ul> especificado.
+    */
+
+}
+
+@media screen and (min-width: 1728px) {
+    .container__link{
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho{
+        padding: 0 2em;
+    }
+
+    .opcoes{
+        margin-right: auto; /*quando é utilizado o auto ele procura preencher o espaço restante, como neste caso foi utilizado o o margin-right ele empurrou todos os itens para a esquerda preenchendo todo o espaço vazio da direita(right)*/
+    }
+
+    .container__texto{
+        display: block;
+    }
+
+    
+}
